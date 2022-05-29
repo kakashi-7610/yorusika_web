@@ -1,0 +1,18 @@
+{% load static %}
+{% load sass_tags %}
+
+<footer class="contents-footer">
+  <nav class="site-menu">
+    <ul>
+      <li><a href="{% url 'yorushika:overview' %}">OVERVIEW</a></li>
+      <li><a href="{% url 'yorushika:recommend' %}">RECOMMEND</a></li>
+      <li><a href="{% url 'yorushika:album' %}">ALBUM</a></li>
+      <li><a href="{% url 'yorushika:sanctuary' %}">SANCTUARY</a></li>
+    </ul>
+  </nav>
+  <a class="footer-logo" href="{% url 'yorushika:index' %}">
+      <img src="{% static 'yorushika/img/footer/yorushika_logo.png' %}" alt="yorushika">
+  </a>
+  <p class="member">n-buna suis</p>
+  <p class="formed">Formed in 2017</p>
+</footer>
