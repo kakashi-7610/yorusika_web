@@ -1,0 +1,15 @@
+.header-logo {
+  display: block;
+  width: 100px;
+
+  >.logo {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .header-logo {
+    width: 50px;
+  }
+}

@@ -6,13 +6,17 @@
 <head>
   <meta charset="UTF-8">
   <title>yorushika introduction website</title>
-  {% comment %} <link rel="stylesheet" href="{% sass_src 'yorushika/css/yorushika-style.scss' %}" /> {% endcomment %}
+  <link rel="stylesheet" href="{% sass_src 'yorushika/css/yorushika-style.scss' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <script src="{% static 'yorushika/js/toggle-menu.js' %}"></script>
   <meta name="description" content="ページの概要分を記載します">
   <meta name="viewport" content="width=device-width">
 </head>
-<body>
+<body class="contents-wrapper">
   {% include 'yorushika/header.html' %}
-  <main class="">
+  <main class="contents-body">
     {% block content %}{% endblock %}
 	</main>
   {% include 'yorushika/footer.html' %}

@@ -4,16 +4,24 @@
 <header class="contents-header">
   <div class="header-inner">
     <a class="header-logo" href="{% url 'yorushika:index' %}">
-      <img src="{% static 'yorushika/img/header/yorushika_logo.png' %}" alt="yorushika">
+      <img class="logo" src="{% static 'yorushika/img/header/yorushika_logo.png' %}" alt="yorushika">
     </a>
     <button class="toggle-menu"></button>
-    <div class="headerl-menu">
+    <div class="header-menu">
       <nav class="site-menu">
-        <ul>
-          <li><a href="{% url 'yorushika:overview' %}">OVERVIEW</a></li>
-          <li><a href="{% url 'yorushika:recommend' %}">RECOMMEND</a></li>
-          <li><a href="{% url 'yorushika:album' %}">ALBUM</a></li>
-          <li><a href="{% url 'yorushika:sanctuary' %}">SANCTUARY</a></li>
+        <ul class="nav-menu">
+          <li class="nav-list">
+            <a class="link" href="{% url 'yorushika:overview' %}">OVERVIEW</a>
+          </li>
+          <li class="nav-list">
+            <a class="link" href="{% url 'yorushika:recommend' %}">RECOMMEND</a>
+          </li>
+          <li class="nav-list">
+            <a class="link" href="{% url 'yorushika:album' %}">ALBUM</a>
+          </li>
+          <li class="nav-list">
+            <a class="link" href="{% url 'yorushika:sanctuary' %}">SANCTUARY</a>
+          </li>
         </ul>
       </nav>
     </div>

@@ -1,0 +1,16 @@
+.nav-list {
+  margin-left: 20px;
+  margin-right: 20px;
+
+  >.link {
+    color: inherit;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@media(max-width: 800px) {
+  .nav-list {
+    margin-top: 20px;
+  }
+}
