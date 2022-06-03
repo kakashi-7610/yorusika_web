@@ -1,0 +1,11 @@
+.nav-menu {
+  list-style: none;
+  display: flex;
+}
+
+@media(max-width: 800px) {
+  .nav-menu {
+    display: block;
+    text-align: center;
+  }
+}

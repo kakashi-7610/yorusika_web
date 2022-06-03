@@ -1,5 +1,22 @@
 {% extends 'yorushika/base.html' %}
 
 {% block content %}
-トップページです。
+
+<div class="first-view">
+  <div class="view-text">
+    <h1 class="title">Welcome to the site <br>that introduces Yorushika</h1>
+    <p class="text">please have a good stay</p>
+  </div>
+</div>
+<div class="first-lead">
+  <p class="lead">このサイトではヨルシカについて記載しています。<br>
+    ヨルシカの概要やアルバム、<br>
+    人気曲やおすすめ曲について紹介しています。<br>
+    ヨルシカの良さが少しでも多くの人に伝わればと思います。
+  </p>
+  <div class="link-button">
+    <a class="link" href="{% url 'yorushika:overview' %}">OVERVIEW</a>
+  </div>
+</div>
+
 {% endblock %}
