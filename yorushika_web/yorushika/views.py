@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import Song
 
 
 def index(request):
-    return render(request, 'yorushika/index.html')
+    # -relese_datteにすると降順になる
+    songs = Song.objects.all().order_by('release_date')
+    return render(request, 'yorushika/index.html', {"songs": songs})
 
 
 def overview(request):

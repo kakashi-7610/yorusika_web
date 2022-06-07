@@ -1,0 +1,13 @@
+.song-list {
+  flex-shrink: 0;
+  width: 260px;
+  margin-left: 75px;
+
+  >.image {
+    max-width: 100%;
+  }
+}
+
+.song-list:first-child {
+  margin-left: 0;
+}
