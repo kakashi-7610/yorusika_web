@@ -7,3 +7,10 @@
   list-style: none;
   overflow: scroll;
 }
+
+@media (max-width: 800px) {
+  .item-list {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
