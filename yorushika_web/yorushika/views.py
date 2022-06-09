@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Song
+from .models import Song, Overview
 
 
 def index(request):
@@ -9,7 +9,8 @@ def index(request):
 
 
 def overview(request):
-    return render(request, 'yorushika/overview.html')
+    overviews = Overview.objects.all().order_by('created_at')
+    return render(request, 'yorushika/overview.html', {"overviews": overviews})
 
 
 def recommend(request):

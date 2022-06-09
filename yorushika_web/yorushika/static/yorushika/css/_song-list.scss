@@ -11,3 +11,10 @@
 .song-list:first-child {
   margin-left: 0;
 }
+
+@media (max-width:800px) {
+  .song-list {
+    width: 220px;
+    margin-left: 30px;
+  }
+}

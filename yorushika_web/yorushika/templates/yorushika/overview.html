@@ -1,5 +1,31 @@
 {% extends 'yorushika/base.html' %}
 
 {% block content %}
-overview
+
+<div class="overview-title">
+  <h1 class="title">OVERVIEW</h1>
+  <p class="text">ヨルシカの概要</p>
+</div>
+
+{% for overview in overviews %}
+  {% if forloop.counter|divisibleby:"2" %}
+  <div class="feature-item -reverse">
+    <div class="feature-text -reverse">
+  {% else %}
+  <div class="feature-item">
+    <div class="feature-text">
+  {% endif %}
+      <h2 class="title">{{ overview.title }}</h2>
+      <p class="text">{{ overview.text }}</p>
+    </div>
+    <img src="{{ overview.image.url }}" class="image" alt="概要の画像">
+  </div>
+{% endfor %}
+
+<div class="youtube-movie">
+  <h2 class="title">LIVE MOVIE</h2>
+  <iframe class="movie" src="https://www.youtube.com/embed/Ht6lcYg9Zfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <P class="text">こちらは以前行われたonline liveの映像になっております。liveも素晴らしいのでぜひご覧ください。</p>
+</div>
+
 {% endblock %}
