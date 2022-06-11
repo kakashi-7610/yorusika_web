@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import Song, Overview
+from .models import Recommend, Overview
 
 
 def index(request):
     # -relese_datteにすると降順になる
-    songs = Song.objects.all().order_by('release_date')
-    return render(request, 'yorushika/index.html', {"songs": songs})
+    recommends = Recommend.objects.all().order_by('release_date')
+    return render(request, 'yorushika/index.html', {"recommends": recommends})
 
 
 def overview(request):
@@ -14,7 +14,9 @@ def overview(request):
 
 
 def recommend(request):
-    return render(request, 'yorushika/recommend.html')
+    # -relese_datteにすると降順になる
+    recommends = Recommend.objects.all().order_by('release_date')
+    return render(request, 'yorushika/recommend.html', {"recommends": recommends})
 
 
 def album(request):

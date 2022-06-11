@@ -1,5 +1,24 @@
 {% extends 'yorushika/base.html' %}
 
 {% block content %}
-recommend
+
+<div class="top-image -recommend">
+  <h1 class="title">RECOMMEND</h1>
+  <p class="text">おすすめ曲</p>
+</div>
+
+<ul class="grid-list">
+  {% for recommend in recommends %}
+    <li class="grid-item">
+      <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
+      <dl class="song-detail">
+        <dt class="title">{{ recommend.title }}</dt>
+        <dd class="text">{{ recommend.text }}</dd>
+      </dl>
+      <a class="spotify" href="{{ recommend.url }}">spotifyで聞く</a>
+      <p class="album">{{ recommend.album }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
 {% endblock %}

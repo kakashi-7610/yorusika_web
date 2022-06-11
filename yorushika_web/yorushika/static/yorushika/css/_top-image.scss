@@ -1,4 +1,4 @@
-.overview-title {
+.top-image {
   height: 310px;
   background-image: url(../img/main/overview.jpg);
   background-repeat: no-repeat;
@@ -10,6 +10,11 @@
   align-items: center;
   color: #ffffff;
   text-shadow: 1px 1px 10px #4b2c14;
+
+  &.-recommend {
+    background-image: url(../img/main/recommend.jpg);
+    text-shadow: 3px 3px 8px #000000;
+  }
 
   >.title {
     font-family: 'Montserrat', sans-serif;

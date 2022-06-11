@@ -21,15 +21,15 @@
 <div class="recommend-song">
   <h2 class="header">RECOMMEND</h2>
   <ul class="item-list">
-    {% for song in songs %}
+    {% for recommend in recommends %}
       <li class="song-list">
-        <img src="{{ song.image.url }}" class="image" alt="おすすめ曲の画像">
+        <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
         <dl class="song-detail">
           <dt class="detail-header">
-            <span class="title">{{ song.title }}</span>
-            <a class="spotify" href="{{ song.url }}">spotifyで聞く</a>
+            <span class="title">{{ recommend.title }}</span>
+            <a class="spotify" href="{{ recommend.url }}">spotifyで聞く</a>
           </dt>
-          <dd class="text">{{ song.text }}</dd>
+          <dd class="text">{{ recommend.text }}</dd>
         </dl>
       </li>
     {% endfor %}
