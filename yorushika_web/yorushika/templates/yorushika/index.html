@@ -10,8 +10,8 @@
 </div>
 <div class="first-lead">
   <p class="lead">このサイトではヨルシカについて記載しています。<br>
-    ヨルシカの概要やアルバム、<br>
-    人気曲やおすすめ曲について紹介しています。<br>
+    ヨルシカの概要、おすすめ曲、<br>
+    アルバム、聖地について紹介しています。<br>
     ヨルシカの良さが少しでも多くの人に伝わればと思います。
   </p>
   <div class="link-button">
@@ -24,10 +24,10 @@
     {% for recommend in recommends %}
       <li class="song-list">
         <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
-        <dl class="song-detail">
+        <dl class="item-detail">
           <dt class="detail-header">
             <span class="title">{{ recommend.title }}</span>
-            <a class="spotify" href="{{ recommend.url }}">spotifyで聞く</a>
+            <a class="spotify" href="{{ recommend.url }}" target="_blank">spotifyで聞く</a>
           </dt>
           <dd class="text">{{ recommend.text }}</dd>
         </dl>

@@ -1,0 +1,33 @@
+{% extends 'yorushika/base.html' %}
+
+{% block content %}
+
+{% include 'yorushika/title.html' %}
+
+<div class="album-contents">
+  <div class="album-item">
+    <h2 class="title">{{ select_album.title }}</h2>
+    <div class="album-area">
+      <img src="{{ select_album.image.url }}" class="image" alt="アルバムの画像">
+      <div class="about-album">
+        <p class="text">{{ select_album.text }}</p>
+        {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
+        <a class="spotify" href="{{ select_album.url }}" target="_blank">spotifyで聞く</a>
+      </div>
+    </div>
+    <div class="song-area">
+      <h2 class="title">SONG LIST</h2>
+      <ul class="album-song">
+        {% for song in songs %}
+          <li class="about-song">
+            <dd class="song">{{ song.title }}</dd>
+            <a class="spotify" href="{{ song.url }}" target="_blank">spotifyで聞く</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% include 'yorushika/menu.html' %}
+</div>
+
+{% endblock %}

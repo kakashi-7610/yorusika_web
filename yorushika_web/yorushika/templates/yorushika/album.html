@@ -1,5 +1,25 @@
 {% extends 'yorushika/base.html' %}
 
 {% block content %}
-album
+
+{% include 'yorushika/title.html' %}
+
+<div class="album-contents">
+  <div class="album-item">
+    <h2 class="title">ALBUM LIST</h2>
+    <ul class="album-list">
+      {% for album in albums %}
+        <a class="song-link" href="{% url 'yorushika:song' album.pk %}">
+          <img src="{{ album.image.url }}" class="image" alt="アルバムの画像">
+          <dl class="item-detail">
+            <dt class="title">{{ album.title }}</dt>
+            <dd class="text">{{ album.text }}</dd>
+          </dl>
+        </a>
+      {% endfor %}
+    </ul>
+  </div>
+  {% include 'yorushika/menu.html' %}
+</div>
+
 {% endblock %}
