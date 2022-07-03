@@ -16,6 +16,13 @@
     text-shadow: 3px 3px 8px #000000;
   }
 
+  &.-sanctuary {
+    background-image: url(../img/main/sanctuary.jpg);
+    text-shadow: 3px 3px 8px #4b2c14;
+    color: #000000;
+    background-position: center calc(50% + 50px);
+  }
+
   >.title {
     font-family: 'Montserrat', sans-serif;
     font-size: 32px;
@@ -25,5 +32,13 @@
   >.text {
     font-size: 14px;
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 800px) {
+  .top-image {
+    &.-sanctuary {
+      background-position: center center;
+    }
   }
 }

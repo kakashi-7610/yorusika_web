@@ -16,7 +16,8 @@
     <div class="feature-text">
   {% endif %}
       <h2 class="title">{{ overview.title }}</h2>
-      <p class="text">{{ overview.text }}</p>
+      {% comment %} linebreaksbrで改行を反映 {% endcomment %}
+      <p class="text">{{ overview.text|linebreaksbr }}</p>
     </div>
     <img src="{{ overview.image.url }}" class="image" alt="概要の画像">
   </div>

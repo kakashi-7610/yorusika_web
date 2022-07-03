@@ -11,11 +11,11 @@
   {% for recommend in recommends %}
     <li class="grid-item">
       <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
-      <dl class="song-detail">
+      <dl class="item-detail">
         <dt class="title">{{ recommend.title }}</dt>
         <dd class="text">{{ recommend.text }}</dd>
       </dl>
-      <a class="spotify" href="{{ recommend.url }}">spotifyで聞く</a>
+      <a class="spotify" href="{{ recommend.url }}" target="_blank">spotifyで聞く</a>
       <p class="album">{{ recommend.album }}</p>
     </li>
   {% endfor %}
