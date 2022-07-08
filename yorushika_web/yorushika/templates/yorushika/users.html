@@ -1,0 +1,11 @@
+{% extends 'yorushika/base.html' %}
+
+{% block content %}
+
+<h2 class="user-name">{{ user.username }}</h2>
+
+{% for recommend in recommends %}
+  <img src="{{ recommend.song.album.image.url }}" class="image">
+{% endfor %}
+
+{% endblock %}

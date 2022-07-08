@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Recommend(models.Model):
@@ -59,3 +60,13 @@ class Sanctuary(models.Model):
 
     def __str__(self):
         return self.sanctuary
+
+
+class Rec(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    text = models.TextField(max_length=300)
+    created_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.song.title

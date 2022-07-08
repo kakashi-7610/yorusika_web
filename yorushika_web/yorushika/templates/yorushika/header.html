@@ -22,6 +22,18 @@
           <li class="nav-list">
             <a class="link" href="{% url 'yorushika:sanctuary' %}">SANCTUARY</a>
           </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:mypage' %}">MYPAGE</a>
+            </li>
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:logout' %}">LOGOUT</a>
+            </li>
+          {% else %}
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:login' %}">LOGIN</a>
+            </li>
+          {% endif %}
         </ul>
       </nav>
     </div>
