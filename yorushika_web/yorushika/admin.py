@@ -3,8 +3,8 @@ from .models import Overview, Album, Recommend, Song, Sanctuary
 
 
 class RecommendAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
+    list_display = ('id', 'song')
+    list_display_links = ('id', 'song')
 
 
 class OverviewAdmin(admin.ModelAdmin):

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7&2maf_rtwd=u0)xws@8sv$7jy2_gg&b4wv(pq32ff&&jqsrf_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -143,3 +143,7 @@ SASS_TEMPLATE_EXTS = ['.html', '.haml']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # model.image.urlでアクセスするURLを指定できる
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'yorushika:login'
+LOGIN_REDIRECT_URL = 'yorushika:index'
+LOGOUT_REDIRECT_URL = 'yorushika:index'
