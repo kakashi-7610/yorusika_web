@@ -13,7 +13,7 @@
           <img src="{{ album.image.url }}" class="image" alt="アルバムの画像">
           <dl class="item-detail">
             <dt class="title">{{ album.title }}</dt>
-            <dd class="text">{{ album.text }}</dd>
+            <dd class="text">{{ album.text|truncatechars:100 }}</dd>
           </dl>
         </a>
       {% endfor %}

@@ -23,13 +23,13 @@
   <ul class="item-list">
     {% for recommend in recommends %}
       <li class="song-list">
-        <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
+        <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
         <dl class="item-detail">
           <dt class="detail-header">
-            <span class="title">{{ recommend.title }}</span>
-            <a class="spotify" href="{{ recommend.url }}" target="_blank">spotifyで聞く</a>
+            <span class="title">{{ recommend.song }}</span>
+            <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
           </dt>
-          <dd class="text">{{ recommend.text }}</dd>
+          <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
         </dl>
       </li>
     {% endfor %}

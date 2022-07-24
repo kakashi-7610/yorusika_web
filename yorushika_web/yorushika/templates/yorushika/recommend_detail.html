@@ -1,0 +1,27 @@
+{% extends 'yorushika/base.html' %}
+
+{% block content %}
+
+<div>
+  <a href="{% url 'yorushika:recommend' %}">RECOMMEND</a>
+</div>
+<div>
+  <a href="{% url 'yorushika:mypage' request.user.id %}">MYPAGE</a>
+</div>
+
+<div class="recommend-detail">
+  <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
+  <div class="recommend-info">
+    <a href="{% url 'yorushika:mypage' recommend.user.id %}">@{{ recommend.user.username }}</a>
+  </div>
+</div>
+
+<h2>{{ recommend.song.title }}</h2>
+<p>{{ recommend.comment }}</p>
+
+<form method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
+  {% csrf_token %}
+  <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+</form>
+
+{% endblock %}

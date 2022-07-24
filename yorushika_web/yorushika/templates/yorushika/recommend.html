@@ -10,15 +10,18 @@
 <ul class="grid-list">
   {% for recommend in recommends %}
     <li class="grid-item">
-      <img src="{{ recommend.image.url }}" class="image" alt="おすすめ曲の画像">
+      <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
       <dl class="item-detail">
-        <dt class="title">{{ recommend.title }}</dt>
-        <dd class="text">{{ recommend.text }}</dd>
+        <dt class="title">{{ recommend.song }}</dt>
+        <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
       </dl>
-      <a class="spotify" href="{{ recommend.url }}" target="_blank">spotifyで聞く</a>
-      <p class="album">{{ recommend.album }}</p>
+      <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
+      <p class="album">{{ recommend.user.username }}</p>
     </li>
   {% endfor %}
 </ul>
+
+{% comment %} TODO:recommend_detailに行けるようにする。
+自分の投稿の場合削除できるようにする。pdfのp102参照 {% endcomment %}
 
 {% endblock %}

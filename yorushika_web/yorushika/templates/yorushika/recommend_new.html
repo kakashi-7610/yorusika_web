@@ -1,0 +1,29 @@
+{% extends 'yorushika/base.html' %}
+
+{% block content %}
+
+<div>
+  <a href="{% url 'yorushika:recommend' %}">RECOMMEND</a>
+</div>
+<div>
+  <a href="{% url 'yorushika:mypage' request.user.id %}">MYPAGE</a>
+</div>
+
+<form action="{% url 'yorushika:recommend_new' %}" method="POST"
+enctype="multipart/form-data">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>RECOMMEND SONG</th>
+      <td>{{ form.song }}</td>
+    </tr>
+    <tr>
+      {% comment %} TODO:表示文字数に制限を付ける {% endcomment %}
+      <th>COMMENT</th>
+      <td>{{ form.text }}</td>
+    </tr>
+  </table>
+  <button type="submit" class="btn">POST</button>
+</form>
+
+{% endblock %}

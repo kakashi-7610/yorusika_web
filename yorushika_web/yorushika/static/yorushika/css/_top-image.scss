@@ -23,6 +23,12 @@
     background-position: center calc(50% + 50px);
   }
 
+  &.-mypage {
+    background-image: url(../img/main/mypage.png);
+    text-shadow: 3px 3px 8px #4b2c14;
+    color: #000000;
+  }
+
   >.title {
     font-family: 'Montserrat', sans-serif;
     font-size: 32px;
