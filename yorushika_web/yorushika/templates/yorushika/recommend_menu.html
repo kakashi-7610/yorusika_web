@@ -1,0 +1,12 @@
+<aside class="side-menu">
+  <div class="menu-inner">
+    <h2 class="title">LIST</h2>
+    <ul class="menu-list">
+      {% for recommend in recommends %}
+        <li class="list-item">
+          <a class="link" href="{% url 'yorushika:recommend_detail' recommend.id %}">{{ recommend.song.title }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</aside>

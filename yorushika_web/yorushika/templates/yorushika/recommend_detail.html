@@ -2,26 +2,28 @@
 
 {% block content %}
 
-<div>
-  <a href="{% url 'yorushika:recommend' %}">RECOMMEND</a>
-</div>
-<div>
-  <a href="{% url 'yorushika:mypage' request.user.id %}">MYPAGE</a>
-</div>
-
-<div class="recommend-detail">
-  <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
-  <div class="recommend-info">
-    <a href="{% url 'yorushika:mypage' recommend.user.id %}">@{{ recommend.user.username }}</a>
+<div class="album-contents">
+  <div class="album-item">
+    <h2 class="title">{{ recommend.song.title }}</h2>
+    <div class="album-area">
+      <img src="{{ recommend.song.album.image.url }}" class="image" alt="アルバムの画像">
+      <div class="about-album">
+        <p class="text">{{ select_album.text }}</p>
+        {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
+        <a class="spotify" href="{% url 'yorushika:mypage' recommend.user.id %}">@{{ recommend.user.username }}</a>
+        <a class="spotify" href="{{ recommend.song.album.url }}" target="_blank">spotifyで聞く</a>
+        <a class="spotify" href="{% url 'yorushika:recommend_update' recommend.id %}">編集</a>
+        <form class="spotify" method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
+          {% csrf_token %}
+          <button type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+        </form>
+      </div>
+    </div>
+    <div class="song-area">
+      <p class="comment">{{ recommend.text }}</p>
+    </div>
   </div>
+  {% include 'yorushika/recommend_menu.html' %}
 </div>
-
-<h2>{{ recommend.song.title }}</h2>
-<p>{{ recommend.comment }}</p>
-
-<form method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
-  {% csrf_token %}
-  <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
-</form>
 
 {% endblock %}

@@ -94,9 +94,28 @@ def recommend_new(request):
         return render(request, 'yorushika/recommend_new.html', {'form': form})
 
 
+@login_required
 def recommend_detail(request, pk):
     recommend = get_object_or_404(Recommend, pk=pk)
-    return render(request, 'yorushika/recommend_detail.html', {'recommend': recommend})
+    # サイドメニューにてリストを表示するためユーザーに紐づくrecommendを取得
+    recommends = Recommend.objects.filter(
+        user=recommend.user).order_by('-created_at')
+    return render(request, 'yorushika/recommend_detail.html', {'recommend': recommend, 'recommends': recommends})
+
+
+@login_required
+def recommend_update(request, pk):
+    recommend = get_object_or_404(Recommend, pk=pk, user=request.user)
+    if request.method == "POST":
+        # instanceを指定することで元の値を埋め込める
+        form = RecommendForm(request.POST, instance=recommend)
+        if form.is_valid():
+            form.save()
+            return redirect('yorushika:mypage', request.user.id)
+    else:
+        # instanceを指定することで元の値を埋め込める
+        form = RecommendForm(instance=recommend)
+        return render(request, 'yorushika/recommend_update.html', {'recommend': recommend, 'form': form})
 
 
 @require_POST
