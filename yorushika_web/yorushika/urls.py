@@ -16,6 +16,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('recommend/new/', views.recommend_new, name='recommend_new'),
     path('recommend/<int:pk>/', views.recommend_detail, name='recommend_detail'),
+    path('recommend/<int:pk>/update/',
+         views.recommend_update, name='recommend_update'),
     path('recommend/<int:pk>/delete/',
          views.recommend_delete, name='recommend_delete'),
 ]

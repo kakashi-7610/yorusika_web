@@ -16,7 +16,7 @@
         <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
       </dl>
       <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
-      <p class="album">{{ recommend.user.username }}</p>
+      <p class="username">{{ recommend.user.username }}</p>
     </li>
   {% endfor %}
 </ul>
