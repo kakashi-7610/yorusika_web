@@ -16,6 +16,21 @@
           <li class="nav-list">
             <a class="link" href="{% url 'yorushika:sanctuary' %}">SANCTUARY</a>
           </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:mypage' request.user.id %}">MYPAGE</a>
+            </li>
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:logout' %}">SIGNOUT</a>
+            </li>
+          {% else %}
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:signup' %}">SIGNUP</a>
+            </li>
+            <li class="nav-list">
+              <a class="link" href="{% url 'yorushika:login' %}">SIGNIN</a>
+            </li>
+          {% endif %}
         </ul>
       </nav>
   <a class="footer-logo" href="{% url 'yorushika:index' %}">

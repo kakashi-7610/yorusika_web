@@ -4,7 +4,7 @@
     <ul class="menu-list">
       {% for album in albums %}
         <li class="list-item">
-          <a class="link" href="{% url 'yorushika:song' album.pk %}">{{ album.title }}
+          <a class="link" href="{% url 'yorushika:song' album.pk %}">{{ album.title }}</a>
         </li>
       {% endfor %}
     </ul>

@@ -14,6 +14,7 @@
     font-weight: bold;
   }
 
+  // aタグ内にaタグを定義した時直接cssを当てることができなかったため、ここで定義している。
   >.spotify {
     background-color: #93FFAB;
     font-family: 'Montserrat', sans-serif;
@@ -23,6 +24,7 @@
     margin-top: auto;
     margin-left: auto;
     margin-right: auto;
+    font-weight: bold;
   }
 
   >.spotify:hover {

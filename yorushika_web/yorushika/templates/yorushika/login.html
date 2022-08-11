@@ -2,19 +2,26 @@
 
 {% block content %}
 
-<form class="form-signin" method="POST">
-  {% csrf_token %}
-  {% if form.errors %}
-    <p>ユーザー名かパスワードが間違っています。</p>
-  {% endif %}
-  <h2>ログイン</h2>
-  <label>ユーザー名</label>
-  <input name="username"><br>
-  <label>パスワード</label>
-  <input type="password" name="password"><br>
-  <input type="submit" value="ログイン">
-</form>
-
-<p><a href="{% url 'yorushika:signup' %}">ユーザー登録はこちら</a></p>
+<div class="contact-signin">
+  <h2 class=title>SIGNIN</h2>
+  <form class="form-signin" method="POST">
+    {% csrf_token %}
+    <dl class="form-area">
+      <dt class="form-label">
+        <span class="required">ユーザー名</span>
+      </dt>
+      <dd class="form-input"><input class="input" name="username"></dd>
+      <dt class="form-label">
+        <span class="required">パスワード</span>
+      </dt>
+      <dd class="form-input"><input class="input" type="password" name="password"></dd>
+      {% if form.errors %}
+        <p class=error>※ユーザー名かパスワードが間違っています。</p>
+      {% endif %}
+    </dl>
+    <p class="confirm">ご入力内容をご確認の上、お間違いがなければ[SIGNIN]ボタンを押してください。</p>
+    <button class="submit" type="submit">SIGNIN</button>
+  </form>
+</div>
 
 {% endblock %}

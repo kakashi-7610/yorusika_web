@@ -1,29 +1,38 @@
 {% extends 'yorushika/base.html' %}
 
+{% comment %} フォームにクラス名を付けるためのロード {% endcomment %}
+{% load widget_tweaks %}
+
 {% block content %}
 
-<div>
-  <a href="{% url 'yorushika:recommend' %}">RECOMMEND</a>
-</div>
-<div>
-  <a href="{% url 'yorushika:mypage' request.user.id %}">MYPAGE</a>
-</div>
-
-<form action="{% url 'yorushika:recommend_update' recommend.id %}" method="POST"
+<div class="contact-signin">
+  <div class="link-button">
+    <a class="link" href="{% url 'yorushika:mypage_detail' recommend.id %}">戻る</a>
+  </div>
+  
+  <h2 class=title>EDIT</h2>
+  <form class="form-signin" action="{% url 'yorushika:recommend_update' recommend.id %}" method="POST"
 enctype="multipart/form-data">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <th>RECOMMEND SONG</th>
-      <td>{{ form.song }}</td>
-    </tr>
-    <tr>
+    {% csrf_token %}
+    <dl class="form-area">
+      <dt class="form-label">
+        <span class="required">RECOMMEND SONG</span>
+      </dt>
+      <dd class="form-input">{{ form.song|add_class:"selectbox" }}</dd>
+
+      <dt class="form-label">
+        <span class="required">COMMENT</span>
+      </dt>
       {% comment %} TODO:表示文字数に制限を付ける {% endcomment %}
-      <th>COMMENT</th>
-      <td>{{ form.text }}</td>
-    </tr>
-  </table>
-  <button type="submit" class="btn">POST</button>
-</form>
+      <dd class="form-input">{{ form.text|add_class:"textarea" }}</dd>
+
+      {% if form.errors %}
+        <p class=error>※ユーザー名かパスワードが間違っています。</p>
+      {% endif %}
+    </dl>
+    <p class="confirm">ご入力内容をご確認の上、お間違いがなければ[POST]ボタンを押してください。</p>
+    <button class="submit" type="submit">EDIT</button>
+  </form>
+</div>
 
 {% endblock %}

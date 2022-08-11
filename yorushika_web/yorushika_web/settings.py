@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sass_processor',
     # Photoモデル削除とともに画像も消えるようにする
     'django_cleanup',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

@@ -10,11 +10,13 @@
 <ul class="grid-list">
   {% for recommend in recommends %}
     <li class="grid-item">
-      <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
-      <dl class="item-detail">
-        <dt class="title">{{ recommend.song }}</dt>
-        <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
-      </dl>
+      <a class="song-link" href="{% url 'yorushika:recommend_detail' recommend.id %}">
+        <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
+        <dl class="item-detail">
+          <dt class="title">{{ recommend.song }}</dt>
+          <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
+        </dl>
+      </a>
       <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
       <p class="username">{{ recommend.user.username }}</p>
     </li>

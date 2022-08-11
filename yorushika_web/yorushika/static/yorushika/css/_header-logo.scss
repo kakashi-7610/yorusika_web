@@ -1,6 +1,7 @@
 .header-logo {
   display: block;
   width: 100px;
+  min-width: 100px;
 
   >.logo {
     display: block;
@@ -10,5 +11,6 @@
 @media (max-width: 800px) {
   .header-logo {
     width: 50px;
+    min-width: 50px;
   }
 }

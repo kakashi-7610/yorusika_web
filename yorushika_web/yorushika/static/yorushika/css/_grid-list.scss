@@ -10,6 +10,10 @@
   column-gap: 95px;
   row-gap: 70px;
   justify-content: center;
+
+  &.-mypage {
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 800px) {

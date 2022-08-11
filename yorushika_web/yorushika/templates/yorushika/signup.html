@@ -2,20 +2,38 @@
 
 {% block content %}
 
-<form method="POST" action="{% url 'yorushika:signup' %}">
-  {% csrf_token %}
-  <label>ユーザー名</label>
-  {{ form.username }}
-  {{ form.username.errors }}<br>
-  <label>パスワード</label>
-  {{ form.password1 }}
-  {{ form.password1.errors }}<br>
-  <label>パスワード(確認)</label>
-  {{ form.password2 }}
-  {{ form.password2.errors }}<br>
-  <input type="submit" value="SUBMIT">
-</form>
+<div class="contact-signin">
+  <h2 class=title>SIGNUP</h2>
+  <form class="form-signin" method="POST" action="{% url 'yorushika:signup' %}">
+    {% csrf_token %}
+    <dl class="form-area">
+      <dt class="form-label">
+        <span class="required">ユーザー名</span>
+      </dt>
+      <dd class="form-input"><input class="input" name="username"></dd>
+      {% if form.username.errors %}
+        <p class=error>※{{ form.username.errors.0 }}</p>
+      {% endif %}
 
-<p><a href="{% url 'yorushika:login' %}">ログインはこちら</a></p>
+      <dt class="form-label">
+        <span class="required">パスワード</span>
+      </dt>
+      <dd class="form-input"><input class="input" type="password" name="password1"></dd>
+      {% if form.password1.errors %}
+        <p class=error>※{{ form.password1.errors.0 }}</p>
+      {% endif %}
+
+      <dt class="form-label">
+        <span class="required">パスワード（確認）</span>
+      </dt>
+      <dd class="form-input"><input class="input" type="password" name="password2"></dd>
+      {% if form.password2.errors %}
+        <p class=error>※{{ form.password2.errors.0 }}</p>
+      {% endif %}
+    </dl>
+    <p class="confirm">ご入力内容をご確認の上、お間違いがなければ[SIGNUP]ボタンを押してください。</p>
+    <button class="submit" type="submit">SIGNUP</button>
+  </form>
+</div>
 
 {% endblock %}
