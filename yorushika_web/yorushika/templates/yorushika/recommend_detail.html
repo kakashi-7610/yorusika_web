@@ -10,13 +10,15 @@
       <div class="about-album">
         <p class="text">{{ select_album.text }}</p>
         {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
-        <a class="spotify" href="{% url 'yorushika:mypage' recommend.user.id %}">@{{ recommend.user.username }}</a>
+        <a class="link" href="{% url 'yorushika:mypage' recommend.user.id %}">MYPAGEへ戻る</a>
         <a class="spotify" href="{{ recommend.song.album.url }}" target="_blank">spotifyで聞く</a>
-        <a class="spotify" href="{% url 'yorushika:recommend_update' recommend.id %}">編集</a>
-        <form class="spotify" method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
-          {% csrf_token %}
-          <button type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
-        </form>
+        {% if request.user == recommend.user %}
+          <a class="link" href="{% url 'yorushika:recommend_update' recommend.id %}">EDIT</a>
+          <form class="delete-button" method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
+            {% csrf_token %}
+            <button type="submit" class="link" onclick='return confirm("本当に削除しますか？");'>DELETE</button>
+          </form>
+        {% endif %}
       </div>
     </div>
     <div class="song-area">

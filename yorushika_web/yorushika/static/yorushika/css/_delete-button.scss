@@ -1,10 +1,10 @@
-.link-button {
-  text-align: center;
+.delete-button {
   margin-top: 40px;
 
   >.link {
+    cursor: pointer;
+    border: none;
     background-color: #f4dd64;
-    display: inline-block;
     min-width: 180px;
     line-height: 48px;
     font-family: 'Montserrat', sans-serif;
@@ -15,5 +15,17 @@
 
   >.link:hover {
     background-color: #d8b500;
+  }
+
+  >.link:focus {
+    border: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .delete-button {
+    >.link {
+      width: 100%;
+    }
   }
 }

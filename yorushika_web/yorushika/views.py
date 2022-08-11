@@ -57,6 +57,21 @@ def mypage(request, pk):
     return render(request, 'yorushika/mypage.html', contents)
 
 
+@login_required
+def mypage_detail(request, pk):
+    recommend = get_object_or_404(Recommend, pk=pk)
+    # サイドメニューにてリストを表示するためユーザーに紐づくrecommendを取得
+    recommends = Recommend.objects.filter(
+        user=recommend.user).order_by('-created_at')
+    contents = {
+        'recommend': recommend,
+        'recommends': recommends,
+        'menu_title': 'LIST',
+        'link': 'recommend',
+    }
+    return render(request, 'yorushika/recommend_detail.html', contents)
+
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -94,13 +109,17 @@ def recommend_new(request):
         return render(request, 'yorushika/recommend_new.html', {'form': form})
 
 
-@login_required
 def recommend_detail(request, pk):
     recommend = get_object_or_404(Recommend, pk=pk)
     # サイドメニューにてリストを表示するためユーザーに紐づくrecommendを取得
-    recommends = Recommend.objects.filter(
-        user=recommend.user).order_by('-created_at')
-    return render(request, 'yorushika/recommend_detail.html', {'recommend': recommend, 'recommends': recommends})
+    recommends = Recommend.objects.all().order_by('-created_at')[:10]
+    contents = {
+        'recommend': recommend,
+        'recommends': recommends,
+        'menu_title': '最新10件',
+        'link': 'recommend',
+    }
+    return render(request, 'yorushika/recommend_detail.html', contents)
 
 
 @login_required

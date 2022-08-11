@@ -5,24 +5,24 @@
 <div class="top-image -mypage">
   <h1 class="title">MYPAGE</h1>
   <p class="text">マイページ</p>
-  <h2 class="username">ようこそ{{ user.username }}様</h1>
+  <h2 class="username">welcome to {{ user.username }}</h1>
 </div>
 
 <div class="recommend-song">
   <div class="link-button">
     <a class="link" href="{% url 'yorushika:recommend_new' %}">NEW POST</a>
   </div>
-  <ul class="grid-list">
+  <ul class="grid-list -mypage">
     {% for recommend in recommends %}
       <li class="grid-item">
-        <a class="song-link" href="{% url 'yorushika:recommend_detail' recommend.id %}">
+        <a class="song-link" href="{% url 'yorushika:mypage_detail' recommend.id %}">
           <img src="{{ recommend.song.album.image.url }}" class="image" alt="おすすめ曲の画像">
           <dl class="item-detail">
             <dt class="title">{{ recommend.song }}</dt>
             <dd class="text">{{ recommend.text|truncatechars:100 }}</dd>
           </dl>
-          <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
         </a>
+        <a class="spotify" href="{{ recommend.song.url }}" target="_blank">spotifyで聞く</a>
       </li>
     {% endfor %}
   </ul>

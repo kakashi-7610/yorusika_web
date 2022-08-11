@@ -12,6 +12,7 @@
       <div class="about-album">
         <p class="text">{{ select_album.text }}</p>
         {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
+        <a class="link" href="{% url 'yorushika:album' %}">戻る</a>
         <a class="spotify" href="{{ select_album.url }}" target="_blank">spotifyで聞く</a>
       </div>
     </div>
