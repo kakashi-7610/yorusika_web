@@ -1,0 +1,42 @@
+{% extends 'yorushika/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+  <script src="{% static 'yorushika/js/recommend_detail.js' %}"></script>
+</head>
+
+<button class="startButton">スタート</button>
+<button class="stopButton">ストップ</button>
+<div class="display">0</div>
+<div class="log"></div>
+
+<div class="album-contents">
+  <div class="album-item">
+    <h2 class="title">{{ recommend.song.title }}</h2>
+    <div class="album-area">
+      <img src="{{ recommend.song.album.image.url }}" class="image" alt="アルバムの画像">
+      <div class="about-album">
+        <p class="text">{{ select_album.text }}</p>
+        {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
+        <a class="link" href="{% url 'yorushika:mypage' recommend.user.id %}">MYPAGEへ戻る</a>
+        <a class="spotify" href="{{ recommend.song.album.url }}" target="_blank">spotifyで聞く</a>
+        {% if request.user == recommend.user %}
+          <a class="link" href="{% url 'yorushika:recommend_update' recommend.id %}">EDIT</a>
+          <form class="delete-button" method="POST" action="{% url 'yorushika:recommend_delete' recommend.id %}">
+            {% csrf_token %}
+            <button type="submit" class="link" onclick="return deleteRecommend()">DELETE</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+    <div class="song-area">
+      <p class="comment">{{ recommend.text }}</p>
+    </div>
+  </div>
+  {% include 'yorushika/recommend_menu.html' %}
+</div>
+
+{% endblock %}

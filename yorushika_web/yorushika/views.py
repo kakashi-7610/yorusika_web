@@ -67,7 +67,7 @@ def mypage_detail(request, pk):
         'recommend': recommend,
         'recommends': recommends,
         'menu_title': 'LIST',
-        'link': 'recommend',
+        'link': 'mypage',
     }
     return render(request, 'yorushika/recommend_detail.html', contents)
 
