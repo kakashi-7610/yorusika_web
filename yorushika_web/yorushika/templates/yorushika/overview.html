@@ -1,6 +1,11 @@
 {% extends 'yorushika/base.html' %}
+{% load static %}
 
 {% block content %}
+
+<head>
+  <script src="{% static 'yorushika/js/overview.js' %}"></script>
+</head>
 
 <div class="top-image">
   <h1 class="title">OVERVIEW</h1>
@@ -25,7 +30,9 @@
 
 <div class="youtube-movie">
   <h2 class="title">LIVE MOVIE</h2>
-  <iframe class="movie" src="https://www.youtube.com/embed/Ht6lcYg9Zfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="movie-frame">
+    
+  </div>
   <P class="text">こちらは以前行われたonline liveの映像になっております。liveも素晴らしいのでぜひご覧ください。</p>
 </div>
 
