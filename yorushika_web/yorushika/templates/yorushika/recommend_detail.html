@@ -16,7 +16,12 @@
       <div class="about-album">
         <p class="text">{{ select_album.text }}</p>
         {% comment %} _blankと指定するとリンクを押したときに別タブでページが表示される {% endcomment %}
-        <a class="link" href="{% url 'yorushika:mypage' recommend.user.id %}">MYPAGEへ戻る</a>
+        {% if request.user == recommend.user %}
+          <a class="link" href="{% url 'yorushika:mypage' recommend.user.id %}">MYPAGEへ戻る</a>
+        {% else %}
+          <a class="link" href="{% url 'yorushika:recommend'%}">RECOMMENDへ戻る</a>
+        {% endif %}
+
         <a class="spotify" href="{{ recommend.song.album.url }}" target="_blank">spotifyで聞く</a>
         {% if request.user == recommend.user %}
           <a class="link" href="{% url 'yorushika:recommend_update' recommend.id %}">EDIT</a>
