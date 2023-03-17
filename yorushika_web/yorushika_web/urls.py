@@ -21,9 +21,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('yorushika/', include('yorushika.urls')),
+    path('api/', include('api.urls')),
 ]
 
 # MEDIA_ROOTを公開する(アクセス可能にする)
 urlpatterns += static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
+]

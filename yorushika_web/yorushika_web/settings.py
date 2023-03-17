@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'yorushika',
+    'api',
     'sass_processor',
     # Photoモデル削除とともに画像も消えるようにする
     'django_cleanup',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
