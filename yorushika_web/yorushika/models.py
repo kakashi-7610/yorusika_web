@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 
 
 class Overview(models.Model):
@@ -32,9 +35,21 @@ class Song(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     song_order = models.IntegerField()
+    owner = models.ForeignKey(
+        'auth.User', related_name='songs', on_delete=models.CASCADE)
+    highlighted = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        lexer = get_lexer_by_name(self.language)
+        linenos = 'table' if self.linenos else False
+        options = {'table': self.title} if self.title else {}
+        formatter = HtmlFormatter(
+            style=self.style, linenons=linenos, full=True, **options)
+        self.highlighted = highlight(self.code, lexer, formatter)
+        super().save(*args, **kwargs)
 
 
 class Recommend(models.Model):
