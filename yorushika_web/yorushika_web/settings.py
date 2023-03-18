@@ -157,3 +157,79 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'yorushika:login'
 LOGIN_REDIRECT_URL = 'yorushika:index'
 LOGOUT_REDIRECT_URL = 'yorushika:index'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'all': {
+            'format':'\t'.join([
+                'levelname:%(levelname)s',
+                'asctime:%(asctime)s',
+                # 'created:%(created)s'
+                'filename:%(filename)s',
+                'funcName:%(funcName)s',
+                # 'levelno:%(levelno)s',
+                'lineno:%(lineno)s',
+                'message:%(message)s',
+                # 'module:%(module)s',
+                # 'msecs:%(msecs)s',
+                # 'name:%(name)s',
+                # 'pathname:%(pathname)s',
+                # 'process:%(process)s',
+            ]),
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'all',
+        },
+        # 'error': {
+        #     'level': 'WARNING',
+        #     'class': 'logging.StreamHandler',
+        #     'formatter': 'all',
+        # },
+        'trace': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, "yorushika/logs/trace.log"),
+            'formatter': 'all',
+        },
+        # 'info': {
+        #     'level': 'INFO',
+        #     'class': 'logging.FileHandler',
+        #     'filename': os.path.join(BASE_DIR, "yorushika/logs/trace.log"),
+        #     'formatter': 'all',
+        # }
+    },
+    "root": {
+        "handlers": ['console'],
+        "level": 'INFO',
+    },
+    'loggers': {
+        # 'django': {
+        #     'handlers': ['console', 'mail_admins'],
+        #     'level': 'INFO',
+        # },
+        'django.server': {
+            'handlers': ['trace'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'yorushika': {
+            'handlers': ['trace'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
+}
